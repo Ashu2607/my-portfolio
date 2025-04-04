@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 import streamlit as st
 from PIL import Image, ImageDraw
 import os
@@ -123,7 +123,7 @@ st.markdown("""
 import streamlit as st
 
 # --- Blog Section Title ---
-section_title("## ✍️ Blog")
+section_title("Blog", "✍️")
 
 st.markdown("### 📝 Latest Articles")
 
