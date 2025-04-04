@@ -123,7 +123,7 @@ st.markdown("""
 import streamlit as st
 
 # --- Blog Section Title ---
-st.markdown("## ✍️ Blog")
+section_title("## ✍️ Blog")
 
 st.markdown("### 📝 Latest Articles")
 
