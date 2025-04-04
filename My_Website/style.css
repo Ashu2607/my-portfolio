@@ -1,0 +1,134 @@
+/* Global Styles */
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1e1e1e; /* Dark theme */
+    color: #ffffff; /* Light text for contrast */
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Header Styling */
+h1 {
+    color: #ffffff;
+    font-size: 2em;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+h2 {
+    color: #cccccc;
+    font-size: 1.5em;
+}
+
+/* Centering the Profile Image and Making it Circular */
+.profile-img {
+    display: block;
+    margin: 20px auto; /* Centers the image */
+    width: 200px; /* Adjust size as needed */
+    height: 200px; /* Ensures it remains a perfect circle */
+    object-fit: cover; /* Prevents distortion */
+    border-radius: 50%; /* Makes it circular */
+    border: 4px solid #ffffff; /* White border for better visibility */
+    box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.2); /* Subtle shadow */
+}
+
+/* Section Styling */
+.stMarkdown {
+    padding: 20px;
+    background-color: #2c2c2c; /* Dark card background */
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(255, 255, 255, 0.1);
+    margin: 20px auto;
+    width: 80%;
+}
+
+/* Info Box */
+.stAlert {
+    background-color: #3a3a3a;
+    border-left: 5px solid #3498db;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* Links */
+a {
+    color: #1abc9c;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #16a085;
+}
+
+/* Subtext Styling */
+.subtext {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+/* Icon Styling */
+.rocket-icon {
+    display: inline-block;
+    font-size: 1.5em;
+    margin-right: 5px;
+}
+
+/* Contact Buttons Styling */
+.contact-buttons {
+    display: flex;
+    justify-content: center; /* Centers the buttons */
+    gap: 20px; /* Adds space between buttons */
+    flex-wrap: wrap; /* Ensures responsiveness on smaller screens */
+    margin-top: 20px;
+}
+
+/* Button Styling */
+.contact-buttons a {
+    display: inline-flex; /* Aligns icons and text properly */
+    align-items: center; /* Centers content inside buttons */
+    padding: 10px 20px; /* More padding for better spacing */
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bold;
+    text-decoration: none;
+    color: #ffffff;
+}
+
+/* Add margin between each button manually if needed */
+.contact-buttons a:not(:last-child) {
+    margin-right: 15px; /* Ensures spacing */
+}
+
+/* Individual Button Styling */
+.contact-buttons .email {
+    background-color: #c0392b; /* Red for Gmail */
+}
+
+.contact-buttons .linkedin {
+    background-color: #0077b5; /* Blue for LinkedIn */
+}
+
+.contact-buttons .github {
+    background-color: #24292e; /* Black for GitHub */
+}
+
+.contact-buttons .instagram {
+    background-color: #e4405f; /* Pink for Instagram */
+}
+
+.contact-buttons .call {
+    background-color: #25d366; /* Green for WhatsApp */
+}
+
+/* Hover Effect for Buttons */
+.contact-buttons a:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+    transition: 0.3s ease-in-out;
+}
