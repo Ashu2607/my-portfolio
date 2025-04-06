@@ -117,8 +117,20 @@ st.markdown("""
 - **Clinical Trial Data Analysis:** Analyzed clinical trial data from Novartis, focusing on study status, sponsor details, interventions, outcomes, and study design.  
 - **Data Cleaning & Visualization:** Used heatmaps for missing values and performed Exploratory Data Analysis (EDA) with Pandas, Seaborn, and Matplotlib to understand data distribution and relationships.  
 - **Modeling & Insights:** Applied various machine learning techniques, including embeddings, LIME, SHAP, Named Entity Linking (NLM), Random Forest, and Logistic Regression, to extract insights and improve predictive accuracy.  
-- 🔗 **[GitHub Repository](#)** *(Replace `#` with the actual link)*  
+- 🔗 **[GitHub Repository](https://github.com/Ashu2607/Novartis)** 
 
+""", unsafe_allow_html=True)
+
+
+section_title("Skills", "🛠")
+st.markdown("""
+- **Programming:** C/C++, Python, JavaScript, Dart  
+- **Data Science:** NumPy, Pandas, Scikit-learn, TensorFlow, Keras  
+- **Machine Learning:** Regression, Classification, Clustering, XGBoost  
+- **Web Development:** HTML, CSS, React.js, Node.js  
+- **App Development:** Flutter  
+- **Databases:** MySQL, MongoDB  
+- **Tools & Others:** Git, MATLAB, Figma  
 """, unsafe_allow_html=True)
 
 
@@ -189,17 +201,6 @@ with st.expander("📊 Key Insights"):
     - Provided actionable insights to **optimize funding allocation in clinical research**.
     """)
 
-
-section_title("Skills", "🛠")
-st.markdown("""
-- **Programming:** C/C++, Python, JavaScript, Dart  
-- **Data Science:** NumPy, Pandas, Scikit-learn, TensorFlow, Keras  
-- **Machine Learning:** Regression, Classification, Clustering, XGBoost  
-- **Web Development:** HTML, CSS, React.js, Node.js  
-- **App Development:** Flutter  
-- **Databases:** MySQL, MongoDB  
-- **Tools & Others:** Git, MATLAB, Figma  
-""", unsafe_allow_html=True)
 
 
 section_title("Achievements", "🏆")
