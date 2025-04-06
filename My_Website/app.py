@@ -33,9 +33,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Profile Section
-
-image_path = os.path.join(os.path.dirname(__file__), "circular_profile.png")
- 
+image_path = "profile.png"  
 
 if os.path.exists(image_path):
     circular_image = make_circular(image_path)
@@ -50,7 +48,7 @@ if os.path.exists(image_path):
     with col1:
         st.write("  ")  # Empty space for centering
     with col2:
-        st.image(image_path, width=150)  # Image appears centered
+        st.image(circular_image_path, width=150)  # Image appears centered
         
         # 🔥 FIXED INDENTATION ERROR HERE 🔥
         st.markdown("""
@@ -72,7 +70,7 @@ if os.path.exists(image_path):
         <div class="container" style="width: 450px;">
        <h2 class="name" style="text-align: left;">Ashutosh Singh</h2>
         <p class="subtitle" style="text-align: left; font-size: 18px; color: #bbbbbb; font-style: italic;">
-        🚀 Software Developer | Competitive Programmer
+        BTech Student @ IIT Guwahati | Competitive Programmer | Tech Enthusiast
        </p>
         </div>
 
@@ -120,7 +118,6 @@ st.markdown("""
 - 🔗 **[GitHub Repository](https://github.com/Ashu2607/Novartis)** 
 
 """, unsafe_allow_html=True)
-
 
 section_title("Skills", "🛠")
 st.markdown("""
@@ -203,6 +200,8 @@ with st.expander("📊 Key Insights"):
 
 
 
+
+
 section_title("Achievements", "🏆")
 st.markdown("""
 ### 🚀 Notable Achievements  
@@ -210,23 +209,23 @@ st.markdown("""
 - 🧠 **Semifinalist in Novartis NEST Hackathon 2024**  
    Selected among top teams for innovative ML-based healthcare solutions in a national-level competition organized by Novartis.
 
-- 📘 **Qualified JEE Advanced 2022**  
-   Secured **AIR 5646**, placing in the top 1% of over 160,000 candidates in India’s most competitive engineering entrance exam.
-
-- 🥇 **Gold Medal in Hockey (Spardha 2024)**  
-   Represented Brahmaputra Hostel and clinched the top spot in IIT Guwahati’s inter-hostel championship.
-
 - 💻 **Flutter App Developer at IITG Student Web Committee**  
    Built production-level apps including a weather app and eMart shopping app, awarded certification by the Student Web Committee.
-
-- 🧮 **Pre-Regional Mathematics Olympiad (PRMO) Qualifier**  
-   Cleared the first round of India’s prestigious Olympiad program focused on advanced mathematics.
 
 - 🧠 **Competitive Programming Excellence**  
    Strong problem-solving and DSA skills, with hands-on experience in solving 500+ problems on platforms like LeetCode and Codeforces.
 
 - 🗣️ **Literary Secretary – Brahmaputra Hostel**  
    Organized literary events and led communication initiatives, demonstrating strong leadership and team-building skills.
+
+- 🥇 **Gold Medal in Hockey (Spardha 2024)**  
+   Represented Brahmaputra Hostel and clinched the top spot in IIT Guwahati’s inter-hostel championship.
+
+- 📘 **Qualified JEE Advanced 2022**  
+   Secured **AIR 5646**, placing in the top 1% of over 160,000 candidates in India’s most competitive engineering entrance exam.
+
+- 🧮 **Pre-Regional Mathematics Olympiad (PRMO) Qualifier**  
+   Cleared the first round of India’s prestigious Olympiad program focused on advanced mathematics.
 """)
 
 
