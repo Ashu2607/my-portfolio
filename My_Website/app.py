@@ -33,13 +33,15 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Profile Section
-image_path = "./profile.png"  
+
+image_path = os.path.join(os.path.dirname(__file__), "circular_profile.png")
+ 
 
 if os.path.exists(image_path):
     circular_image = make_circular(image_path)
 
     # Save the circular image temporarily
-    circular_image_path = "./circular_profile.png"
+    circular_image_path = "circular_profile.png"
     circular_image.save(circular_image_path)
 
     # ✅ Use `st.image()` for better compatibility
@@ -48,7 +50,7 @@ if os.path.exists(image_path):
     with col1:
         st.write("  ")  # Empty space for centering
     with col2:
-        st.image(circular_image_path, width=150)  # Image appears centered
+        st.image(image_path, width=150)  # Image appears centered
         
         # 🔥 FIXED INDENTATION ERROR HERE 🔥
         st.markdown("""
