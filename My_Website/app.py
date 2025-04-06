@@ -33,13 +33,13 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Profile Section
-image_path = "profile.png"  
+image_path = "./profile.png"  
 
 if os.path.exists(image_path):
     circular_image = make_circular(image_path)
 
     # Save the circular image temporarily
-    circular_image_path = "circular_profile.png"
+    circular_image_path = "./circular_profile.png"
     circular_image.save(circular_image_path)
 
     # ✅ Use `st.image()` for better compatibility
