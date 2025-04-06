@@ -115,7 +115,7 @@ st.markdown("""
 - **Clinical Trial Data Analysis:** Analyzed clinical trial data from Novartis, focusing on study status, sponsor details, interventions, outcomes, and study design.  
 - **Data Cleaning & Visualization:** Used heatmaps for missing values and performed Exploratory Data Analysis (EDA) with Pandas, Seaborn, and Matplotlib to understand data distribution and relationships.  
 - **Modeling & Insights:** Applied various machine learning techniques, including embeddings, LIME, SHAP, Named Entity Linking (NLM), Random Forest, and Logistic Regression, to extract insights and improve predictive accuracy.  
-- 🔗 **[GitHub Repository](https://github.com/Ashu2607/Novartis/settings)** 
+- 🔗 **[GitHub Repository](https://github.com/Ashu2607/Novartis)** 
 
 """, unsafe_allow_html=True)
 
