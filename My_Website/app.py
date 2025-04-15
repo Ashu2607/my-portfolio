@@ -36,7 +36,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Profile Section
-image_path = "./circular_profile.png"  
+image_path = f"{os.getcwd()}\circular_profile.png"  
 
 if os.path.exists(image_path):
     circular_image = make_circular(image_path)
