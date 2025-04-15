@@ -4,6 +4,9 @@ from PIL import Image, ImageDraw
 import os
 
 def make_circular(image_path):
+    st.write("Looking for:", image_path)
+    st.write("Current working directory:", os.getcwd())
+
     """Function to make an image circular"""
     img = Image.open(image_path).convert("RGBA")
     size = min(img.size)
