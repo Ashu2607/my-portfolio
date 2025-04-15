@@ -67,7 +67,7 @@ if response.status_code == 200:
         <div class="container" style="width: 450px;">
             <h2 class="name" style="text-align: left;">Ashutosh Singh</h2>
             <p class="subtitle" style="text-align: left; font-size: 18px; color: #bbbbbb; font-style: italic;">
-                BTech Student @ IIT Guwahati | Competitive Programmer | Tech Enthusiast
+                BTech Student @ IIT Guwahati | Competitive Programmer | Data Science Enthusiast
             </p>
         </div>
         """, unsafe_allow_html=True)
