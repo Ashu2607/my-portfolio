@@ -2,27 +2,22 @@
 import streamlit as st
 from PIL import Image, ImageDraw
 import os
+import requests
+from io import BytesIO
 
-def make_circular(image_path):
-    st.write("Looking for:", image_path)
-    st.write("Current working directory:", os.getcwd())
-
+def make_circular(img):
     """Function to make an image circular"""
-    img = Image.open(image_path).convert("RGBA")
     size = min(img.size)
-
-    # Create a circular mask
     mask = Image.new("L", (size, size), 0)
     draw = ImageDraw.Draw(mask)
     draw.ellipse((0, 0, size, size), fill=255)
-
-    # Apply mask and crop
+    
     circular_img = Image.new("RGBA", (size, size))
     circular_img.paste(img.resize((size, size)), (0, 0), mask)
-
+    
     return circular_img
 
-# Portfolio Title (Centered)
+# Portfolio Title
 st.markdown("""
     <style>
         @media (max-width: 640px) {
@@ -35,30 +30,24 @@ st.markdown("""
     <h1 class="portfolio-title" style="padding-left: 140px; font-size: 36px; font-weight: bold;">My Portfolio</h1>
 """, unsafe_allow_html=True)
 
-# Profile Section
-image_path = f"{os.getcwd()}\circular_profile.png"
-url="https://drive.google.com/drive/u/1/folders/1A-7xsGKWZvxsrZWVLvsqcJy4lPC3fpKX"
+# Fetching and displaying circular profile image
+file_id = "1XWtdohyCLQQlKEuYs4BHj5Qf9d_fgy1_"
+url = f"https://drive.google.com/uc?export=download&id={file_id}"
+
+response = requests.get(url)
 
 if response.status_code == 200:
-    # Open the image from the response content
-    img = Image.open(BytesIO(response.content))
+    img = Image.open(BytesIO(response.content)).convert("RGBA")
+    circular_image = make_circular(img)
 
-if os.path.exists(image_path):
-    circular_image = make_circular(image_path)
-
-    # Save the circular image temporarily
     circular_image_path = "circular_profile.png"
     circular_image.save(circular_image_path)
 
-    # ✅ Use `st.image()` for better compatibility
     col1, col2, col3 = st.columns([0.5, 1, 1])
-    
     with col1:
-        st.write("  ")  # Empty space for centering
+        st.write(" ")
     with col2:
-        st.image(img, width=150)  # Image appears centered
-        
-        # 🔥 FIXED INDENTATION ERROR HERE 🔥
+        st.image(circular_image_path, width=150)
         st.markdown("""
         <style>
             .container {
@@ -68,27 +57,24 @@ if os.path.exists(image_path):
             }
             .name {
                 display: inline-block;
-                margin-bottom: -5px; /* Adjust spacing */
+                margin-bottom: -5px;
             }
             .subtitle {
                 display: inline-block;
-                margin-top: -20px; /* Pull closer */
+                margin-top: -20px;
             }
         </style>
         <div class="container" style="width: 450px;">
-       <h2 class="name" style="text-align: left;">Ashutosh Singh</h2>
-        <p class="subtitle" style="text-align: left; font-size: 18px; color: #bbbbbb; font-style: italic;">
-        BTech Student @ IIT Guwahati | Competitive Programmer | Data Science Enthusiast
-       </p>
+            <h2 class="name" style="text-align: left;">Ashutosh Singh</h2>
+            <p class="subtitle" style="text-align: left; font-size: 18px; color: #bbbbbb; font-style: italic;">
+                BTech Student @ IIT Guwahati | Competitive Programmer | Tech Enthusiast
+            </p>
         </div>
-
-        """, unsafe_allow_html=True)  # ✅ Correct indentation here!
-        
+        """, unsafe_allow_html=True)
     with col3:
-        st.write("")  # Empty space for centering
-
+        st.write("")
 else:
-    st.error("⚠️ Profile image NOT found! Check the filename or path.")
+    st.error("⚠️ Profile image NOT found! Please check the Google Drive file ID.")
 
 # Styled Section Headers with Borders
 def section_title(title, icon):
@@ -98,7 +84,7 @@ def section_title(title, icon):
     </div>
     """, unsafe_allow_html=True)
 
-# Sections with Borders
+# Sections
 section_title("About Me", "💡")
 st.info("""
 Hello fellas! 👋
@@ -111,20 +97,18 @@ Always excited to learn, innovate, and take on new challenges! Let’s build som
 """)
 
 section_title("Projects", "🚀")
-
 st.markdown("""
 ### 📌 **Credit Card Behavior Prediction Score**
 - **Predictive Modeling for Credit Behavior:** Developed a machine learning model to predict credit card usage behavior using real-world financial data, enhancing risk assessment and customer profiling.  
-- **Feature Engineering & Model Explainability:** Applied embedding, LIME, SHAP, and feature selection to interpret key factors influencing credit behavior, ensuring transparency in decision-making.  
+- **Feature Engineering & Model Explainability:** Applied embedding, LIME, SHAP, and feature selection to interpret key factors influencing credit behavior.  
 - **Machine Learning Implementation:** Implemented Random Forest and Logistic Regression models to classify credit card users, optimizing performance through hyperparameter tuning and evaluation metrics.  
 - 🔗 **[GitHub Repository](https://github.com/Ashu2607/CreditCard-score)**
 
- ### 📌 **Predicting Completion of Clinical Trials**  
+### 📌 **Predicting Completion of Clinical Trials**
 - **Clinical Trial Data Analysis:** Analyzed clinical trial data from Novartis, focusing on study status, sponsor details, interventions, outcomes, and study design.  
-- **Data Cleaning & Visualization:** Used heatmaps for missing values and performed Exploratory Data Analysis (EDA) with Pandas, Seaborn, and Matplotlib to understand data distribution and relationships.  
-- **Modeling & Insights:** Applied various machine learning techniques, including embeddings, LIME, SHAP, Named Entity Linking (NLM), Random Forest, and Logistic Regression, to extract insights and improve predictive accuracy.  
+- **Data Cleaning & Visualization:** Used heatmaps for missing values and performed EDA with Pandas, Seaborn, and Matplotlib.  
+- **Modeling & Insights:** Applied techniques like embeddings, LIME, SHAP, NLM, and classifiers like Random Forest, Logistic Regression.  
 - 🔗 **[GitHub Repository](https://github.com/Ashu2607/Novartis)** 
-
 """, unsafe_allow_html=True)
 
 section_title("Skills", "🛠")
@@ -138,17 +122,10 @@ st.markdown("""
 - **Tools & Others:** Git, MATLAB, Figma  
 """, unsafe_allow_html=True)
 
-
-import streamlit as st
-
-# --- Blog Section Title ---
 section_title("Blog", "✍️")
-
 st.markdown("### 📝 Latest Articles")
 
-# --- Credit Card Default Risk Scoring Project ---
 st.markdown("### 📉 Credit Card Default Risk Scoring – ML Project")
-
 with st.expander("📌 Problem Statement"):
     st.write("""
     Banks face significant losses due to credit card defaults. The goal was to develop a **Behavioral Score Model** to predict the probability of default and assist in risk management.
@@ -156,59 +133,49 @@ with st.expander("📌 Problem Statement"):
 
 with st.expander("⚠️ Challenges"):
     st.markdown("""
-    - **Imbalanced Data**: Defaults were rare, making it harder for models to learn patterns.  
-    - **Diverse Feature Types**: Included **transaction history, credit bureau records, and loan inquiries**.  
-    - **Model Generalization**: Ensuring consistent performance on unseen validation data.
+    - **Imbalanced Data**  
+    - **Diverse Feature Types**  
+    - **Model Generalization**
     """)
 
 with st.expander("🛠 Approach"):
     st.markdown("""
-    - **Preprocessed data**: Handled missing values, performed encoding, and applied scaling.  
-    - **Feature Selection**: Used **correlation analysis** and **domain knowledge**.  
-    - **Trained ML Models**: **Logistic Regression, Random Forest, and XGBoost**.  
-    - **Evaluation Metrics**: Emphasized **ROC-AUC** and **precision-recall curves** for accuracy.
+    - Preprocessing, Feature Selection, and ML model training  
+    - Used ROC-AUC and PR curves for performance metrics
     """)
 
 with st.expander("🚀 Outcome"):
     st.markdown("""
-    - Successfully **predicted default probabilities** for validation accounts.  
-    - Ready for **integration into Bank A’s risk framework** to improve credit assessment.
+    - Successfully predicted default probabilities  
+    - Ready for integration into risk framework
     """)
 
-
-# --- Clinical Trials Completion Prediction Project ---
 st.markdown("### 🧪 Clinical Trials Completion Prediction – Novartis Hackathon")
-
 with st.expander("📌 Problem Statement"):
     st.write("""
-    Many clinical trials fail before completion. The objective was to **predict whether a clinical trial would successfully complete**, aiding pharma companies in optimizing resource allocation.
+    Objective was to predict whether a clinical trial would successfully complete.
     """)
 
 with st.expander("⚠️ Challenges"):
     st.markdown("""
-    - **Severely Imbalanced Classes**: Very few trials were marked as 'Withdrawn'.  
-    - **Complex Categorical Variables**: Multiple attributes like **intervention types, sponsors, and study duration**.  
-    - **Model Interpretability**: Required clear insights for non-technical stakeholders.
+    - Severely imbalanced classes  
+    - Complex categorical variables  
+    - Model interpretability required
     """)
 
 with st.expander("🛠 Approach"):
     st.markdown("""
-    - **Data Cleaning & Feature Engineering**: Extracted insights from **study duration, sponsor credibility, and intervention types**.  
-    - **Applied ML Models**: **Logistic Regression, Random Forest, and XGBoost** for robust predictions.  
-    - **Addressed Class Imbalance**: Used **SMOTE (Synthetic Minority Over-sampling Technique)**.  
-    - **Improved Interpretability**: Leveraged **SHAP values** for clear feature importance analysis.
+    - Cleaned data, applied SMOTE  
+    - Models: Logistic Regression, RF, XGBoost  
+    - Used SHAP for interpretability
     """)
 
 with st.expander("📊 Key Insights"):
     st.markdown("""
-    - **Pharma-sponsored trials** had significantly **higher success rates**.  
-    - **Drug-based interventions** performed **better than behavioral studies** in trial completion.  
-    - Provided actionable insights to **optimize funding allocation in clinical research**.
+    - Pharma trials had higher success  
+    - Drug-based interventions did better  
+    - Actionable funding insights
     """)
-
-
-
-
 
 section_title("Achievements", "🏆")
 st.markdown("""
@@ -237,10 +204,7 @@ st.markdown("""
 """)
 
 
-
-
 st.subheader("📬 Contact Me")
-
 st.markdown("""
 <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 10px;">
     <a href="mailto:ashutosh.snh@iitg.ac.in" target="_blank">
