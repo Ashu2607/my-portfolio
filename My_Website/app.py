@@ -36,7 +36,12 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Profile Section
-image_path = f"{os.getcwd()}\circular_profile.png"  
+image_path = f"{os.getcwd()}\circular_profile.png"
+url="https://drive.google.com/drive/u/1/folders/1A-7xsGKWZvxsrZWVLvsqcJy4lPC3fpKX"
+
+if response.status_code == 200:
+    # Open the image from the response content
+    img = Image.open(BytesIO(response.content))
 
 if os.path.exists(image_path):
     circular_image = make_circular(image_path)
@@ -51,7 +56,7 @@ if os.path.exists(image_path):
     with col1:
         st.write("  ")  # Empty space for centering
     with col2:
-        st.image(image_path, width=150)  # Image appears centered
+        st.image(img, width=150)  # Image appears centered
         
         # 🔥 FIXED INDENTATION ERROR HERE 🔥
         st.markdown("""
