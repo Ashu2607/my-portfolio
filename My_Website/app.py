@@ -31,10 +31,12 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Fetching and displaying circular profile image
-file_id = "1ECnlB6qT3eUtkD7wJkjvh1SEgnHTmhJa"
-url = f"https://drive.google.com/uc?export=download&id={file_id}"
+#file_id = "1ECnlB6qT3eUtkD7wJkjvh1SEgnHTmhJa"
+image_url = "https://drive.google.com/uc?export=view&id=1ECnlB6qT3eUtkD7wJkjvh1SEgnHTmhJa"
 
-response = requests.get(url)
+# Fix this line
+response = requests.get(image_url)
+
 
 if response.status_code == 200:
     img = Image.open(BytesIO(response.content)).convert("RGBA")
