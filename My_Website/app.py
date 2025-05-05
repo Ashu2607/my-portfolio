@@ -31,7 +31,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Fetching and displaying circular profile image
-file_id = "1XWtdohyCLQQlKEuYs4BHj5Qf9d_fgy1_"
+file_id = "1ECnlB6qT3eUtkD7wJkjvh1SEgnHTmhJa"
 url = f"https://drive.google.com/uc?export=download&id={file_id}"
 
 response = requests.get(url)
